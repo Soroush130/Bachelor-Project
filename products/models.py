@@ -1,4 +1,6 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models import Avg
 
 
 class Category(models.Model):
@@ -42,8 +44,10 @@ class Products(models.Model):
     inventory = models.PositiveIntegerField(
         default=0
     )
-    rate = models.IntegerField(
-        default=0
+    main_image = models.ImageField(
+        upload_to='gallery/main_image/',
+        null=True,
+        blank=True
     )
     category = models.ForeignKey(
         Category,
@@ -63,11 +67,32 @@ class Products(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def calculate_rate_product(self):
+        result = self.rates.all().aggregate(Avg('rate'))['rate__avg']
+        print(result)
+        return round(result)
+
+
+class Rate(models.Model):
+    product = models.ForeignKey(
+        Products,
+        on_delete=models.CASCADE,
+        related_name='rates'
+    )
+    rate = models.PositiveIntegerField(
+        default=0,
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+
+    class Meta:
+        db_table = 'rate'
+
 
 class Gallery(models.Model):
     product = models.ForeignKey(
         Products,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     image = models.ImageField(
         upload_to='gallery/'
@@ -75,4 +100,3 @@ class Gallery(models.Model):
 
     class Meta:
         db_table = 'gallery'
-

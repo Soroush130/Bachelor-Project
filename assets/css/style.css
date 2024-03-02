@@ -300,14 +300,14 @@ header .icons a:hover{
 
 .products .box-container .box img{
   height:10rem;
-  transform: rotate(-35deg);
+  /*transform: rotate(-35deg);*/
   filter:drop-shadow(0 .5rem 1rem rgba(0,0,0,.1));
   margin:8rem 2rem;
 }
 
-.products .box-container .box:hover img{
-  transform: rotate(-35deg) scale(1.2);
-}
+/*.products .box-container .box:hover img{*/
+/*  transform: rotate(-35deg) scale(1.2);*/
+/*}*/
 
 .products .box-container .box .icons{
   display: flex;
