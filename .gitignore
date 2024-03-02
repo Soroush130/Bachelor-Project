@@ -9,7 +9,7 @@ bar/env.py
 db.sqlite3
 
 # Migrations
-# accounts/migrations/0*
+ products/migrations/0*
 
 
 # Media
