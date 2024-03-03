@@ -1,0 +1,7 @@
+{% if messages %}
+    <ul class="messages" style="z-index: 10000000000; border: 2px solid; background-color: red; color: white">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
