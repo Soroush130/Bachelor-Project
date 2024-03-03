@@ -11,7 +11,6 @@ def home(request):
     last_products = get_last_products(products)
     # محصولات برجسته
     outstanding_products = get_outstanding_products(products)
-    print(outstanding_products)
 
     context = {
         'last_products': last_products,

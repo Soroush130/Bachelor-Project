@@ -23,7 +23,8 @@ DJANGO_DEFAULT_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'products'
+    'accounts',
+    'products',
 ]
 
 INSTALLED_APPS = DJANGO_DEFAULT_APPS
